@@ -3,6 +3,7 @@ const app = express();
 require("dotenv").config();
 const port = process.env.SERVER_PORT || 3031;
 mongo = require("./services/mongodb.service");
+const { add } = require("./services/mongodb.service");
 
 app.use(express.json());
 
