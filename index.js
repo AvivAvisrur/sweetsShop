@@ -3,13 +3,14 @@ const app = express();
 require("dotenv").config();
 const port = process.env.SERVER_PORT || 3031;
 mongo = require("./services/mongodb.service");
-const { add } = require("./services/mongodb.service");
-
+const errorHandler = require("./errorHandler/errorHandler");
 app.use(express.json());
 
 app.use("/auth", require("./routes/authRoutes"));
 app.use("/user", require("./routes/userRoutes"));
 app.use("/product", require("./routes/productRoutes"));
+
+app.use(errorHandler);
 
 //db connection
 const dbName = process.env.MONGO_DB_NAME;
